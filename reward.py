@@ -61,7 +61,6 @@ def get_reward_v1(state, info, prev_shaping):
         reward = -30*(1+vel)
         reward -= 30*(1+angle)
         reward -= 30*(1+dist)
-        # reward = -100*(1+vel+angle+dist)
     if not info["awake"]:
         reward = +300
     return reward, prev_shaping
@@ -90,11 +89,9 @@ def get_reward_v2(state, info, prev_shaping):
     reward -= 5*fuel
 
     if info["crashed"]:
-        # reward = -100*(1+vel+angle+dist)
         reward = -30*(1+vel)
         reward -= 30*(1+angle)
         reward -= 30*(1+dist)
-        # reward = -100
     if not info["awake"]:
         reward = +300
 
@@ -153,7 +150,6 @@ def get_reward_v3(state, info, episode, prev_shaping): #episode
     reward -= fuel*(1+episode/150)
 
     if info["crashed"]:
-        # reward = -100*(1+vel+angle+dist)
         reward = -30*(1+vel)
         reward -= 30*(1+angle)
         reward -= 30*(1+dist)
@@ -218,7 +214,6 @@ def get_reward_v5(state, info, coef, prev_shaping):
         reward = -30*(1+vel)
         reward -= 30*(1+angle)
         reward -= 30*(1+dist)
-        # reward = -100*(1+vel+angle+dist)
         reward /= (coef+0.5)
         if reward > -150:
             reward = -150
